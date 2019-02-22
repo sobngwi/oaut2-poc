@@ -1,4 +1,4 @@
-package com.oreilly.cloud;
+package com.oreilly.cloud.config;
 
 import javax.sql.DataSource;
 

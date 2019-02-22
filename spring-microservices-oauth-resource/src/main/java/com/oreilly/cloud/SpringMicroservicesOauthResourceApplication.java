@@ -18,44 +18,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @EnableResourceServer
-@RestController
 @EnableGlobalMethodSecurity(prePostEnabled=true)
 @SpringBootApplication
 public class SpringMicroservicesOauthResourceApplication {
 
-	@RequestMapping("/resource/endpoint")
-	@PreAuthorize("hasRole('ADMIN')")
-	public String endpoint(Principal principal){
-		return "Welcome " + principal.getName() +", This message is protected by the resource server.";
-	}
-	
-	@Bean
-	public RemoteTokenServices tokenService(){
-		RemoteTokenServices tokenService = new RemoteTokenServices();
-		tokenService.setCheckTokenEndpointUrl("http://localhost:9090/oauth/check_token");
-		tokenService.setClientId("resource1");
-		tokenService.setClientSecret("secret");
-		return tokenService;
-	}
-
-	@Bean
-	public TokenStore tokenStore(){
-		return new JdbcTokenStore(dataSource());
-	}
-	
-	@Bean
-	public DataSource dataSource(){
-		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName("org.hsqldb.jdbcDriver");
-		dataSource.setUrl("jdbc:hsqldb:hsql://localhost/testdb");
-		dataSource.setUsername("SA");
-		dataSource.setPassword("");
-		return dataSource;
-	}
-
 	public static void main(String[] args) {
 		SpringApplication.run(SpringMicroservicesOauthResourceApplication.class, args);
 	}
-	
-	
 }

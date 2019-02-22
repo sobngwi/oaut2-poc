@@ -1,4 +1,4 @@
-package com.oreilly.cloud;
+package com.oreilly.cloud.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,8 +18,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.inMemoryAuthentication()
 				.withUser("user1").password("password1").roles("USER").and()
-				.withUser("alain").password("alain").roles("ADMIN").and()
+				.withUser("alain").password("alain").roles("USER").and()
 				.withUser("admin").password("password2").roles("ADMIN");
 	}
-
 }
