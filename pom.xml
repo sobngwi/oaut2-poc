@@ -20,6 +20,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+	<distribution.management.snapshot.url>http://localhost:8081/artifactory/libs-snapshot-local</distribution.management.snapshot.url>
+	<distribution.management.release.url>http://localhost:8081/artifactory/libs-release-local</distribution.management.release.url>
     </properties>
 
     <modules>
@@ -100,6 +102,16 @@
                 <scope>import</scope>
             </dependency>
         </dependencies>
+	    	<repository>
+			<id>${distribution.management.release.id}</id>
+			<name>Spring Milestone Repository</name>
+			<url>${distribution.management.release.url}</url>
+		</repository>
+		<snapshotRepository>
+			<id>${distribution.management.release.id}</id>
+			<name>Spring Snapshot Repository</name>
+			<url>${distribution.management.snapshot.url}</url>
+		</snapshotRepository>
     </dependencyManagement>
 
 </project>
